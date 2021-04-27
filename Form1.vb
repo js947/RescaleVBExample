@@ -63,6 +63,29 @@ Public Class Form1
             txt_output.Text = ex.Message
         End Try
     End Sub
+
+    Private Async Sub Upload(sender As Object, e As EventArgs) Handles upload_btn.Click
+        If (Not (UploadDialog.ShowDialog() = DialogResult.OK)) Then
+            Return
+        End If
+        txt_output.Text = UploadDialog.FileName
+        txt_output.Text &= Environment.NewLine
+
+        Dim filestream = System.IO.File.OpenRead(UploadDialog.FileName)
+        Dim fileName = System.IO.Path.GetFileName(UploadDialog.FileName)
+        txt_output.Text &= "filename = " & fileName
+        txt_output.Text &= Environment.NewLine
+
+        Dim content = New Net.Http.MultipartFormDataContent()
+        content.Add(New Net.Http.StreamContent(filestream), "file", fileName)
+
+        Dim client = New Net.Http.HttpClient()
+        client.DefaultRequestHeaders.Add("Authorization", "Token " & text_apikey.Text)
+        Dim resp = Await client.PostAsync("https://" & text_apiurl.Text & "/api/v2/files/contents/", content)
+        Dim result = Await resp.Content.ReadAsStringAsync()
+
+        txt_output.Text &= result
+    End Sub
 End Class
 
 Public Class RJobList

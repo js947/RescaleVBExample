@@ -36,6 +36,8 @@ Partial Class Form1
         Me.txt_jobid = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_jobowner = New System.Windows.Forms.TextBox()
+        Me.upload_btn = New System.Windows.Forms.Button()
+        Me.UploadDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SuspendLayout()
         '
         'btn_load
@@ -62,7 +64,7 @@ Partial Class Form1
         Me.text_apikey.Name = "text_apikey"
         Me.text_apikey.Size = New System.Drawing.Size(280, 23)
         Me.text_apikey.TabIndex = 3
-        Me.text_apikey.Text = "asdf1234"
+        Me.text_apikey.Text = "abcd1234"
         '
         'lbl_apikey
         '
@@ -156,11 +158,25 @@ Partial Class Form1
         Me.txt_jobowner.Size = New System.Drawing.Size(376, 23)
         Me.txt_jobowner.TabIndex = 17
         '
+        'upload_btn
+        '
+        Me.upload_btn.Location = New System.Drawing.Point(13, 607)
+        Me.upload_btn.Name = "upload_btn"
+        Me.upload_btn.Size = New System.Drawing.Size(248, 53)
+        Me.upload_btn.TabIndex = 18
+        Me.upload_btn.Text = "upload file"
+        Me.upload_btn.UseVisualStyleBackColor = True
+        '
+        'UploadDialog
+        '
+        Me.UploadDialog.FileName = "UploadDialog"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(993, 590)
+        Me.ClientSize = New System.Drawing.Size(993, 702)
+        Me.Controls.Add(Me.upload_btn)
         Me.Controls.Add(Me.txt_jobowner)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txt_jobid)
@@ -195,4 +211,6 @@ Partial Class Form1
     Friend WithEvents txt_jobid As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents txt_jobowner As TextBox
+    Friend WithEvents upload_btn As Button
+    Friend WithEvents UploadDialog As OpenFileDialog
 End Class
